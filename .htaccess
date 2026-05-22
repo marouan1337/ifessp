@@ -1,0 +1,7 @@
+
+RewriteEngine On
+RewriteBase /
+
+# Force an external 301 redirect from the root domain to the /Campus subfolder
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^$ // [R=301,L]
