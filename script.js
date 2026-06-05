@@ -386,47 +386,48 @@ console.log('%c Contactez-nous: institutifessp@gmail.com | +212 528 89 33 22',
 'color: #666; font-size: 12px;');
 
 // ===========================
-// Registration Notification
+// Welcome Ad Popup
 // ===========================
 const registrationNotification = document.getElementById('registrationNotification');
 const notificationBackdrop = document.getElementById('notificationBackdrop');
 const notificationClose = document.getElementById('notificationClose');
-const notificationRegisterBtn = document.getElementById('notificationRegisterBtn');
+const notificationWhatsappBtn = document.getElementById('notificationWhatsappBtn');
 
+function showWelcomePopup() {
+    if (!notificationBackdrop || !registrationNotification) return;
 
+    registrationNotification.classList.remove('closing');
+    registrationNotification.classList.remove('show');
+    void registrationNotification.offsetWidth;
 
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        if (notificationBackdrop && registrationNotification) {
-            notificationBackdrop.classList.add('show');
-            registrationNotification.classList.add('show');
-        }
-    }, 1500);
-});
+    notificationBackdrop.classList.add('show');
+    registrationNotification.classList.add('show');
+}
 
-// Close notification function
 function closeNotification() {
-    if (registrationNotification) {
-        registrationNotification.classList.remove('show');
+    if (registrationNotification && !registrationNotification.classList.contains('closing')) {
+        registrationNotification.classList.add('closing');
+        setTimeout(() => {
+            registrationNotification.classList.remove('show', 'closing');
+        }, 350);
     }
     if (notificationBackdrop) {
         notificationBackdrop.classList.remove('show');
     }
 }
 
-// Close button click
+window.addEventListener('load', () => {
+    setTimeout(showWelcomePopup, 800);
+});
+
 if (notificationClose) {
     notificationClose.addEventListener('click', closeNotification);
 }
 
-// Close notification when clicking on backdrop
 if (notificationBackdrop) {
     notificationBackdrop.addEventListener('click', closeNotification);
 }
 
-// Register button - close notification and scroll to contact
-if (notificationRegisterBtn) {
-    notificationRegisterBtn.addEventListener('click', () => {
-        closeNotification();
-    });
+if (notificationWhatsappBtn) {
+    notificationWhatsappBtn.addEventListener('click', closeNotification);
 }
