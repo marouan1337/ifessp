@@ -11,6 +11,19 @@
 </head>
 <body>
 
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-content">
+            <div class="splash-logo-container">
+                <img src="footer_logo.svg" alt="IFESSP Logo" class="splash-logo">
+                <div class="logo-glow"></div>
+            </div>
+            <div class="splash-loader">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
@@ -201,6 +214,84 @@
                         <div class="highlight-item">
                             <i class="fas fa-check-circle"></i>
                             <span>Interview de la direction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visitors from Germany Section -->
+    <section class="visitors-section" id="visiteurs-allemagne">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge-visitors">
+                    <i class="fas fa-globe-europe"></i>
+                    <span>Échange International</span>
+                </div>
+                <h2 class="section-title">Visiteurs d'Allemagne</h2>
+                <p class="section-subtitle">Regardez les Reels de la visite de nos invités allemands venus explorer notre institut.</p>
+            </div>
+            
+            <div class="reels-container">
+                <!-- Reel Card 1 -->
+                <div class="reel-card">
+                    <div class="reel-video-wrapper">
+                        <video loop preload="metadata" class="reel-video" id="reelVideo1" playsinline>
+                            <source src="event%20videos/Video-486.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de la vidéo.
+                        </video>
+                        <div class="reel-overlay" onclick="toggleReelPlay('reelVideo1')">
+                            <div class="reel-play-btn"><i class="fas fa-play"></i></div>
+                            
+                            <!-- Badges/Tags (Top right) -->
+                            <div class="reel-top-badges">
+                                <span class="reel-badge"><i class="fab fa-instagram"></i> Reel</span>
+                            </div>
+                            
+                            <!-- Bottom Info Overlay -->
+                            <div class="reel-info-overlay">
+                                <div class="reel-meta">
+                                    <span class="reel-tag tag-germany"><i class="fas fa-flag"></i> Allemagne</span>
+                                    <span class="reel-date"><i class="far fa-calendar-alt"></i> Juin 2026</span>
+                                </div>
+                                <h3>Découverte & Exploration</h3>
+                                <p>Visite guidée de nos infrastructures modernes, laboratoires de simulation et salles de cours.</p>
+                                <div class="reel-interaction">
+                                    <div class="interaction-item" onclick="toggleReelMute('reelVideo1', event)"><i class="fas fa-volume-mute" id="muteIcon_reelVideo1"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reel Card 2 -->
+                <div class="reel-card">
+                    <div class="reel-video-wrapper">
+                        <video loop preload="metadata" class="reel-video" id="reelVideo2" playsinline>
+                            <source src="event%20videos/Video-961.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de la vidéo.
+                        </video>
+                        <div class="reel-overlay" onclick="toggleReelPlay('reelVideo2')">
+                            <div class="reel-play-btn"><i class="fas fa-play"></i></div>
+                            
+                            <!-- Badges/Tags (Top right) -->
+                            <div class="reel-top-badges">
+                                <span class="reel-badge"><i class="fab fa-instagram"></i> Reel</span>
+                            </div>
+                            
+                            <!-- Bottom Info Overlay -->
+                            <div class="reel-info-overlay">
+                                <div class="reel-meta">
+                                    <span class="reel-tag tag-exchange"><i class="fas fa-handshake"></i> Partage</span>
+                                    <span class="reel-date"><i class="far fa-calendar-alt"></i> Juin 2026</span>
+                                </div>
+                                <h3>Échanges Pédagogiques</h3>
+                                <p>Partage d'expérience culturel et professionnel autour des formations médicales.</p>
+                                <div class="reel-interaction">
+                                    <div class="interaction-item" onclick="toggleReelMute('reelVideo2', event)"><i class="fas fa-volume-mute" id="muteIcon_reelVideo2"></i></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

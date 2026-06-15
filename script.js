@@ -1,4 +1,22 @@
 // ===========================
+// Splash Screen & Scroll Lock
+// ===========================
+document.body.style.overflow = 'hidden';
+
+document.addEventListener('DOMContentLoaded', () => {
+    const splashScreen = document.getElementById('splashScreen');
+    if (splashScreen) {
+        setTimeout(() => {
+            splashScreen.classList.add('fade-out');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                splashScreen.remove();
+            }, 800);
+        }, 2200);
+    }
+});
+
+// ===========================
 // Mobile Menu Toggle
 // ===========================
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
@@ -157,7 +175,8 @@ const animateElements = document.querySelectorAll(`
     .step,
     .contact-card,
     .about-text,
-    .about-image
+    .about-image,
+    .reel-card
 `);
 
 animateElements.forEach(el => {
@@ -417,7 +436,8 @@ function closeNotification() {
 }
 
 window.addEventListener('load', () => {
-    setTimeout(showWelcomePopup, 800);
+    // Delay welcome popup to show after splash screen finishes (2200ms splash + 800ms fade/delay)
+    setTimeout(showWelcomePopup, 3000);
 });
 
 if (notificationClose) {
@@ -431,3 +451,63 @@ if (notificationBackdrop) {
 if (notificationWhatsappBtn) {
     notificationWhatsappBtn.addEventListener('click', closeNotification);
 }
+
+// ===========================
+// Instagram Reels Player Logic
+// ===========================
+function toggleReelPlay(videoId) {
+    const video = document.getElementById(videoId);
+    if (!video) return;
+    
+    const wrapper = video.closest('.reel-video-wrapper');
+    
+    if (video.paused) {
+        // Pause all other reels first
+        document.querySelectorAll('.reel-video').forEach(otherVideo => {
+            if (otherVideo.id !== videoId) {
+                otherVideo.pause();
+                const otherWrapper = otherVideo.closest('.reel-video-wrapper');
+                if (otherWrapper) {
+                    otherWrapper.classList.remove('playing');
+                }
+            }
+        });
+        
+        video.play().then(() => {
+            if (wrapper) wrapper.classList.add('playing');
+        }).catch(err => {
+            console.error("Video play failed:", err);
+        });
+    } else {
+        video.pause();
+        if (wrapper) wrapper.classList.remove('playing');
+    }
+}
+
+function toggleReelMute(videoId, event) {
+    if (event) event.stopPropagation();
+    
+    const video = document.getElementById(videoId);
+    if (!video) return;
+    
+    const muteIcon = document.getElementById(`muteIcon_${videoId}`);
+    
+    if (video.muted) {
+        video.muted = false;
+        if (muteIcon) {
+            muteIcon.className = 'fas fa-volume-up';
+        }
+    } else {
+        video.muted = true;
+        if (muteIcon) {
+            muteIcon.className = 'fas fa-volume-mute';
+        }
+    }
+}
+
+// Set all reel videos as muted by default to allow autoplay or easy playing
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.reel-video').forEach(video => {
+        video.muted = true;
+    });
+});
