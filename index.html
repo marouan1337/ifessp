@@ -26,7 +26,7 @@
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="container nav-container">
+        <div class="nav-container">
             <div class="logo">
                 <img src="header_logo.svg" alt="IFESSP Logo">
             </div>
@@ -38,12 +38,17 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#accueil" class="nav-link active">Accueil</a></li>
                 <li><a href="#apropos" class="nav-link">À Propos</a></li>
+                <li><a href="#campus" class="nav-link">Campus</a></li>
                 <li><a href="#direction" class="nav-link">Direction</a></li>
                 <li><a href="#programmes" class="nav-link">Programmes</a></li>
                 <li><a href="#pedagogie" class="nav-link">Pédagogie</a></li>
                 <li><a href="#admission" class="nav-link">Admission</a></li>
                 <li><a href="#contact" class="nav-cta"><i class="fas fa-phone"></i><span>Contact</span></a></li>
             </ul>
+            <div class="header-socials">
+                <a href="https://www.facebook.com/profile.php?id=61583809679076" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/institut_ifessp/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
     </nav>
 
@@ -295,6 +300,58 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Reel Card 3 -->
+                <div class="reel-card">
+                    <div class="reel-video-wrapper">
+                        <video loop preload="metadata" class="reel-video" id="reelVideo3" playsinline>
+                            <source src="videos/ifessp_video_1.mp4" type="video/mp4">
+                            Votre navigateur ne supporte pas la lecture de la vidéo.
+                        </video>
+                        <div class="reel-overlay" onclick="toggleReelPlay('reelVideo3')">
+                            <div class="reel-play-btn"><i class="fas fa-play"></i></div>
+                            
+                            <!-- Badges/Tags (Top right) -->
+                            <div class="reel-top-badges">
+                                <span class="reel-badge"><i class="fab fa-instagram"></i> Reel</span>
+                            </div>
+                            
+                            <!-- Bottom Info Overlay -->
+                            <div class="reel-info-overlay">
+                                <div class="reel-meta">
+                                    <span class="reel-tag tag-cooperation"><i class="fas fa-users"></i> Coopération</span>
+                                    <span class="reel-date"><i class="far fa-calendar-alt"></i> Juin 2026</span>
+                                </div>
+                                <h3>Coopération & Avenir</h3>
+                                <p>Développement de partenariats internationaux pour la formation paramédicale d'excellence.</p>
+                                <div class="reel-interaction">
+                                    <div class="interaction-item" onclick="toggleReelMute('reelVideo3', event)"><i class="fas fa-volume-mute" id="muteIcon_reelVideo3"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Photo Stack Section -->
+            <div class="gallery-stack-wrapper">
+                <div class="gallery-info">
+                    <div class="gallery-badge">
+                        <i class="fas fa-camera-retro"></i>
+                        <span>Instants Immortalisés</span>
+                    </div>
+                    <h3>Album Souvenirs de la Visite</h3>
+                    <p>Découvrez les moments forts de notre rencontre internationale à travers cette galerie de photos interactive. Les cartes défilent automatiquement ou en cliquant sur les flèches.</p>
+                    <div class="stack-controls">
+                        <button class="stack-btn prev-btn" id="stackPrevBtn" aria-label="Image précédente"><i class="fas fa-arrow-left"></i></button>
+                        <button class="stack-btn next-btn" id="stackNextBtn" aria-label="Image suivante"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                <div class="stack-container">
+                    <div class="card-stack" id="photoStack">
+                        <!-- JavaScript will dynamically populate the cards to support 19 photos smoothly -->
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -316,6 +373,42 @@
                 </div>
                 <div class="about-image">
                     <img src="images/Gemini_Generated_Image_5qboi05qboi05qbo.png" alt="Formation en santé">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Gallery Section -->
+    <section class="campus-section" id="campus">
+        <div class="container">
+            <div class="campus-layout-wrapper">
+                <div class="campus-info">
+                    <div class="section-badge-visitors">
+                        <i class="fas fa-university"></i>
+                        <span>Notre Campus</span>
+                    </div>
+                    <h2 class="section-title">Infrastructures & Équipements</h2>
+                    <p class="section-subtitle">Découvrez nos locaux modernes et nos équipements de simulation médicale de pointe conçus pour votre réussite.</p>
+                    
+                    <!-- Category Filters -->
+                    <div class="gallery-filters">
+                        <button class="filter-btn active" data-filter="all">Tout</button>
+                        <button class="filter-btn" data-filter="salles">Salles</button>
+                        <button class="filter-btn" data-filter="equipements">Laboratoires</button>
+                        <button class="filter-btn" data-filter="vie">Espaces</button>
+                    </div>
+
+                    <!-- Navigation Controls -->
+                    <div class="stack-controls">
+                        <button class="stack-btn prev-btn" id="campusPrevBtn" aria-label="Image précédente"><i class="fas fa-arrow-left"></i></button>
+                        <button class="stack-btn next-btn" id="campusNextBtn" aria-label="Image suivante"><i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+                
+                <div class="campus-stack-container">
+                    <div class="card-stack" id="campusPhotoStack">
+                        <!-- JavaScript will dynamically populate the cards to support filtering and smooth 3D transitions -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -845,6 +938,64 @@
         <span class="whatsapp-float-tooltip">Contactez-nous</span>
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Modern Bottom Navigation Bar (Mobile only) -->
+    <div class="bottom-nav">
+        <a href="#accueil" class="bottom-nav-link active">
+            <i class="fas fa-home"></i>
+            <span>Accueil</span>
+        </a>
+        <a href="#campus" class="bottom-nav-link">
+            <i class="fas fa-university"></i>
+            <span>Campus</span>
+        </a>
+        <a href="#programmes" class="bottom-nav-link">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Programmes</span>
+        </a>
+        <a href="#contact" class="bottom-nav-link">
+            <i class="fas fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+        <button class="bottom-nav-link" id="bottomNavMoreBtn" aria-label="Menu supplémentaire">
+            <i class="fas fa-bars"></i>
+            <span>Plus</span>
+        </button>
+    </div>
+
+    <!-- Bottom Sheet Menu (More Items) -->
+    <div class="bottom-sheet" id="bottomSheetMenu" aria-hidden="true">
+        <div class="bottom-sheet-backdrop" id="bottomSheetBackdrop"></div>
+        <div class="bottom-sheet-content">
+            <div class="bottom-sheet-drag-handle"></div>
+            <div class="bottom-sheet-header">
+                <h3>Menu Principal</h3>
+                <button class="bottom-sheet-close" id="bottomSheetClose" aria-label="Fermer le menu"><i class="fas fa-times"></i></button>
+            </div>
+            <ul class="bottom-sheet-links">
+                <li><a href="#apropos" class="bottom-sheet-link"><i class="fas fa-info-circle"></i><span>À Propos</span></a></li>
+                <li><a href="#direction" class="bottom-sheet-link"><i class="fas fa-user-tie"></i><span>Direction</span></a></li>
+                <li><a href="#pedagogie" class="bottom-sheet-link"><i class="fas fa-book-open"></i><span>Pédagogie</span></a></li>
+                <li><a href="#admission" class="bottom-sheet-link"><i class="fas fa-clipboard-check"></i><span>Admission</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Fermer"><i class="fas fa-times"></i></button>
+        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+        <div class="lightbox-content">
+            <div class="lightbox-img-container">
+                <img src="" alt="" class="lightbox-img" id="lightboxImg">
+            </div>
+            <div class="lightbox-caption">
+                <h4 id="lightboxTitle"></h4>
+                <p id="lightboxDesc"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
