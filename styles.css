@@ -1306,6 +1306,17 @@ button, input[type="submit"], input[type="button"], .btn, .social-btn, .notifica
     color: #fff;
 }
 
+.tag-cooperation {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+    color: #fff;
+}
+
+.tag-collaboration {
+    background: linear-gradient(135deg, #7f00ff 0%, #e100ff 100%);
+    color: #fff;
+}
+
+
 .reel-date {
     font-size: 0.75rem;
     opacity: 0.85;
